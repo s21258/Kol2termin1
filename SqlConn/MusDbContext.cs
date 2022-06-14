@@ -33,6 +33,18 @@ namespace Kol2termin1.SqlConn
                     Nickname = "bobek"
                     }
             };
+            var tracks = new List<Track>{
+                new Track{
+                    IdTrack =1,
+                    TrackName = "pierwszytrack",
+                    Duration = 2.3
+                    },
+                new Track{
+                    IdTrack =2,
+                    TrackName = "Drugi track",
+                    Duration = 3.14
+                    }
+            };
 
 
             modelBuilder.Entity<Musician>(e=>{
@@ -67,6 +79,7 @@ namespace Kol2termin1.SqlConn
                 
                 e.HasOne(e=>e.Album).WithMany(e=>e.Tracks).HasForeignKey(e=>e.IdAlbum).OnDelete(DeleteBehavior.Cascade);
                 
+                e.HasData(tracks)
                 e.ToTable("Tracks");
                 });
                 
