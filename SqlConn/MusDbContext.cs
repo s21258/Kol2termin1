@@ -19,7 +19,7 @@ namespace Kol2termin1.SqlConn
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var musicianss = new List<Musician>{
+            var musicians = new List<Musician>{
                 new Musician{
                     IdMusician =1,
                     FirstName = "Karol",
@@ -33,6 +33,8 @@ namespace Kol2termin1.SqlConn
                     Nickname = "bobek"
                     }
             };
+
+
             modelBuilder.Entity<Musician>(e=>{
                 e.HasKey(e=>e.IdMusician);
                 e.Property(e=>e.FirstName).HasMaxLength(30).IsRequired();
@@ -56,6 +58,7 @@ namespace Kol2termin1.SqlConn
                 e.HasOne(e=>e.MusicLabel).WithMany(e=>e.Albums).HasForeignKey(e=>e.IdMusicLabel).OnDelete(DeleteBehavior.Cascade);
                 
                 e.ToTable("Albums");
+                });
 
                 modelBuilder.Entity<Track>(e=>{
                 e.HasKey(e=>e.IdTrack);
@@ -65,7 +68,7 @@ namespace Kol2termin1.SqlConn
                 e.HasOne(e=>e.Album).WithMany(e=>e.Tracks).HasForeignKey(e=>e.IdAlbum).OnDelete(DeleteBehavior.Cascade);
                 
                 e.ToTable("Tracks");
-
+                });
                 
                 modelBuilder.Entity<Musician_Track>(e=>{
                 e.HasOne(e=>e.Musician).WithMany(e=>e.Tracks).HasForeignKey(e=>e.IdMusician).OnDelete(DeleteBehavior.Cascade);
