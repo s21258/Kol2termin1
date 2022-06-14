@@ -7,11 +7,11 @@ namespace Kol2termin1.Models
 {
     public class Album
     {
-        [key]
+        
         public int IdAlbum { get; set; }
-        [required]
         public string AlbumName { get; set; }
         public DateTime PublishDate { get; set; }
-        public virtual IEnumerable<MusicLabel> MusicLabels{get; set;}
+        public virtual MusicLabel MusicLabel{get;set;}
+        public virtual ICollection <Track> Tracks{get; set;}
     }
 }
