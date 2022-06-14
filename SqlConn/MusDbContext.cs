@@ -46,7 +46,7 @@ namespace Kol2termin1.SqlConn
             });
                 modelBuilder.Entity<MusicLabel>(e=>{
                 e.HasKey(e=>e.IdMusicLabel);
-                e.Property(e=>e.Name).HasMaxLength(100).IsRequired();
+                e.Property(e=>e.Name).HasMaxLength(50).IsRequired();
                 
                 e.ToTable("MusicLabel");
             });
