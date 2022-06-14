@@ -26,7 +26,12 @@ namespace Kol2termin1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.services.AddScoped<TService>();
+            
+            services.AddDbContext<SqlConn.MusDbContext>(opt=>{
+                opt.UseSqlServer("Data Source = localhost, 1433;Initial Catalog=testdb;User ID=SA;password=Sup3r_duper_password");
+            });
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

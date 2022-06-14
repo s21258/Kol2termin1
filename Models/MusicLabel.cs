@@ -9,5 +9,6 @@ namespace Kol2termin1.Models
     {
         public int IdMusicLabel { get; set; }
         public string Name { get; set; }
+        public virtual ICollection <Album> Albums{get; set;}
     }
 }
